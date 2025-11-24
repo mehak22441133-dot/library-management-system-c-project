@@ -1,9 +1,9 @@
 
 #include <stdio>
 #include"registration.c"
-#include"issuebooks"
-#include"returnbooks"
-#include"addbooks"
+#include"issuebooks.c"
+#include"returnbooks.c"
+#include"addbooks.c"
 
 extern int registration ();
 extern int issuebooks();
