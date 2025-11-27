@@ -279,3 +279,37 @@ void deleteBook() {
 	fflush ( stdin );
 	getchar();
 	admin_menu();        }
+void editbook() {
+	system ( "cls" );
+	int d, count = 0;
+	printf ( "\n\n\t\t ************* Edit book *************\n\n" );
+	file = fopen ( "books.dat", "rb+" );
+	printf ( "\n\t\t Enter ID: " );
+	scanf ( "%d", &d );
+
+	while ( fread ( &a, sizeof ( a ), 1, file ) == 1 ) {
+
+		if ( d == a.id ) {
+
+			printf ( "\n\t\t Book is Availble!\n" );
+			printf ( "\n\n \t\t ID: %d", a.id );
+			printf ( "\n\t\t Enter New Name: " );
+			scanf ( "%s", a.name );
+			printf ( "\n\t\t Enter New Author: " );
+			scanf ( "%s", a.author );
+			printf ( "\n\t\t Enter New quantity: " );
+			scanf ( "%d", &a.quantity );
+			printf ( "\n\t\t Enter New Rack: " );
+			fseek ( file, ftell ( file ) - sizeof ( a ), 0 );
+			fwrite ( &a, sizeof ( a ), 1, file );
+			fclose ( file );
+			count = 1;
+		}
+	}
+	if ( count == 0 ) {
+		printf ( "\n\n\t\t Book is Not Found!" );
+	}
+	printf ( "\n\n\t\t press any key...." );
+	fflush ( stdin );
+	getchar();
+	admin_menu();        }
